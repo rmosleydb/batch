@@ -1,0 +1,844 @@
+{
+  "datasets" : [ {
+    "name" : "02661f2f",
+    "displayName" : "CookieReview_locationanalytics",
+    "query" : "USE CATALOG `main`;\nUSE SCHEMA `default`;\n\nselect * \nfrom retail_prod.media.reviews_structured_gold;"
+  }, {
+    "name" : "ef027490",
+    "displayName" : "CookieReview_productanalytics",
+    "query" : "USE CATALOG `main`;\nUSE SCHEMA `default`;\n\nselect explode(product_name) as product_name, * except(product_name) \nfrom retail_prod.media.reviews_structured_gold;"
+  } ],
+  "pages" : [ {
+    "name" : "6ddbbfde",
+    "displayName" : "Location",
+    "layout" : [ {
+      "widget" : {
+        "name" : "954a007c",
+        "queries" : [ {
+          "name" : "81a29e78ada24d69b2ef59d21f78ee0e",
+          "query" : {
+            "datasetName" : "02661f2f",
+            "fields" : [ {
+              "name" : "location",
+              "expression" : "`location`"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 0,
+          "viz_spec" : {
+            "display_name" : "location",
+            "description" : "",
+            "viz_type" : "DROPDOWN",
+            "serialized_options" : "{\"column\":\"location\",\"type\":\"multi-select\",\"associativeFilter\":true,\"sortOrder\":\"asc\"}",
+            "query_name" : "81a29e78ada24d69b2ef59d21f78ee0e"
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 1,
+        "width" : 3,
+        "height" : 1
+      }
+    }, {
+      "widget" : {
+        "name" : "74dd218d",
+        "queries" : [ {
+          "name" : "81a29e78ada24d69b2ef59d21f78ee0e",
+          "query" : {
+            "datasetName" : "02661f2f",
+            "fields" : [ {
+              "name" : "franchiseID",
+              "expression" : "`franchiseID`"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 0,
+          "viz_spec" : {
+            "display_name" : "franchiseID",
+            "description" : "",
+            "viz_type" : "DROPDOWN",
+            "serialized_options" : "{\"column\":\"franchiseID\",\"type\":\"single-select\",\"associativeFilter\":true,\"sortOrder\":\"asc\",\"timeInterval\":\"daily\",\"mode\":\"diagonal\",\"showTooltips\":true,\"percentValues\":true,\"timeColumnTitle\":\"Time\",\"peopleColumnTitle\":\"Users\",\"stageColumnTitle\":\"{{ @ }}\",\"numberFormat\":\"0,0.[00]\",\"percentFormat\":\"0.00%\",\"noValuePlaceholder\":\"-\",\"colors\":{\"min\":\"#C4CCD6\",\"max\":\"#077A9D\",\"steps\":7}}",
+            "query_name" : "81a29e78ada24d69b2ef59d21f78ee0e"
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "width" : 3,
+        "height" : 1
+      }
+    }, {
+      "widget" : {
+        "name" : "61027f2c",
+        "queries" : [ {
+          "name" : "81a29e78ada24d69b2ef59d21f78ee0e",
+          "query" : {
+            "datasetName" : "02661f2f",
+            "fields" : [ {
+              "name" : "urgency",
+              "expression" : "`urgency`"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 0,
+          "viz_spec" : {
+            "display_name" : "urgency",
+            "description" : "",
+            "viz_type" : "DROPDOWN",
+            "serialized_options" : "{\"column\":\"urgency\",\"type\":\"single-select\",\"associativeFilter\":true,\"sortOrder\":\"asc\",\"timeInterval\":\"daily\",\"mode\":\"diagonal\",\"showTooltips\":true,\"percentValues\":true,\"timeColumnTitle\":\"Time\",\"peopleColumnTitle\":\"Users\",\"stageColumnTitle\":\"{{ @ }}\",\"numberFormat\":\"0,0.[00]\",\"percentFormat\":\"0.00%\",\"noValuePlaceholder\":\"-\",\"colors\":{\"min\":\"#C4CCD6\",\"max\":\"#077A9D\",\"steps\":7}}",
+            "query_name" : "81a29e78ada24d69b2ef59d21f78ee0e"
+          }
+        }
+      },
+      "position" : {
+        "x" : 3,
+        "y" : 0,
+        "width" : 2,
+        "height" : 1
+      }
+    }, {
+      "widget" : {
+        "name" : "c4ac7fd8",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "02661f2f",
+            "fields" : [ {
+              "name" : "franchiseID",
+              "expression" : "`franchiseID`"
+            }, {
+              "name" : "location",
+              "expression" : "`location`"
+            }, {
+              "name" : "service_score",
+              "expression" : "`service_score`"
+            }, {
+              "name" : "product_score",
+              "expression" : "`product_score`"
+            }, {
+              "name" : "atmosphere_score",
+              "expression" : "`atmosphere_score`"
+            }, {
+              "name" : "urgency",
+              "expression" : "`urgency`"
+            }, {
+              "name" : "review",
+              "expression" : "`review`"
+            }, {
+              "name" : "product_name",
+              "expression" : "`product_name`"
+            } ],
+            "disaggregated" : true
+          }
+        } ],
+        "spec" : {
+          "version" : 1,
+          "widgetType" : "table",
+          "encodings" : {
+            "columns" : [ {
+              "fieldName" : "franchiseID",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "string",
+              "displayAs" : "string",
+              "visible" : true,
+              "order" : 0,
+              "title" : "franchiseID",
+              "allowSearch" : false,
+              "alignContent" : "left",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "franchiseID"
+            }, {
+              "fieldName" : "location",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "string",
+              "displayAs" : "string",
+              "visible" : true,
+              "order" : 1,
+              "title" : "location",
+              "allowSearch" : false,
+              "alignContent" : "left",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "location"
+            }, {
+              "fieldName" : "service_score",
+              "numberFormat" : "0",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "integer",
+              "displayAs" : "number",
+              "visible" : true,
+              "order" : 2,
+              "title" : "service_score",
+              "allowSearch" : false,
+              "alignContent" : "right",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "service_score"
+            }, {
+              "fieldName" : "product_score",
+              "numberFormat" : "0",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "integer",
+              "displayAs" : "number",
+              "visible" : true,
+              "order" : 3,
+              "title" : "product_score",
+              "allowSearch" : false,
+              "alignContent" : "right",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "product_score"
+            }, {
+              "fieldName" : "atmosphere_score",
+              "numberFormat" : "0",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "integer",
+              "displayAs" : "number",
+              "visible" : true,
+              "order" : 4,
+              "title" : "atmosphere_score",
+              "allowSearch" : false,
+              "alignContent" : "right",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "atmosphere_score"
+            }, {
+              "fieldName" : "urgency",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "string",
+              "displayAs" : "string",
+              "visible" : true,
+              "order" : 5,
+              "title" : "urgency",
+              "allowSearch" : false,
+              "alignContent" : "left",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "urgency"
+            }, {
+              "fieldName" : "review",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "string",
+              "displayAs" : "string",
+              "visible" : true,
+              "order" : 6,
+              "title" : "review",
+              "allowSearch" : false,
+              "alignContent" : "left",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "review"
+            }, {
+              "fieldName" : "product_name",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "complex",
+              "displayAs" : "json",
+              "visible" : true,
+              "order" : 7,
+              "title" : "product_name",
+              "allowSearch" : false,
+              "alignContent" : "left",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "product_name"
+            } ]
+          },
+          "invisibleColumns" : [ {
+            "dateTimeFormat" : "DD/MM/YY HH:mm:ss.SSS",
+            "booleanValues" : [ "false", "true" ],
+            "imageUrlTemplate" : "{{ @ }}",
+            "imageTitleTemplate" : "{{ @ }}",
+            "imageWidth" : "",
+            "imageHeight" : "",
+            "linkUrlTemplate" : "{{ @ }}",
+            "linkTextTemplate" : "{{ @ }}",
+            "linkTitleTemplate" : "{{ @ }}",
+            "linkOpenInNewTab" : true,
+            "name" : "review_date",
+            "type" : "datetime",
+            "displayAs" : "datetime",
+            "order" : 8,
+            "title" : "review_date",
+            "allowSearch" : false,
+            "alignContent" : "right",
+            "allowHTML" : false,
+            "highlightLinks" : false,
+            "useMonospaceFont" : false,
+            "preserveWhitespace" : false
+          } ],
+          "allowHTMLByDefault" : false,
+          "itemsPerPage" : 25,
+          "paginationSize" : "default",
+          "condensed" : true,
+          "withRowNumber" : false,
+          "frame" : {
+            "title" : "Results",
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 8,
+        "width" : 6,
+        "height" : 6
+      }
+    }, {
+      "widget" : {
+        "name" : "1958452e",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "02661f2f",
+            "fields" : [ {
+              "name" : "franchiseID",
+              "expression" : "`franchiseID`"
+            }, {
+              "name" : "avg(service_score)",
+              "expression" : "AVG(`service_score`)"
+            }, {
+              "name" : "avg(product_score)",
+              "expression" : "AVG(`product_score`)"
+            }, {
+              "name" : "avg(atmosphere_score)",
+              "expression" : "AVG(`atmosphere_score`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "line",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "franchiseID",
+              "scale" : {
+                "type" : "categorical"
+              },
+              "axis" : {
+                "title" : "Franchise"
+              },
+              "displayName" : "Franchise"
+            },
+            "y" : {
+              "fields" : [ {
+                "fieldName" : "avg(service_score)",
+                "displayName" : "Service"
+              }, {
+                "fieldName" : "avg(product_score)",
+                "displayName" : "Product"
+              }, {
+                "fieldName" : "avg(atmosphere_score)",
+                "displayName" : "Atmosphere"
+              } ],
+              "scale" : {
+                "type" : "quantitative",
+                "domain" : {
+                  "min" : 0,
+                  "max" : 5
+                }
+              },
+              "axis" : {
+                "title" : "Service, Product, Atmosphere"
+              }
+            }
+          },
+          "frame" : {
+            "title" : "Line 1",
+            "showTitle" : true
+          },
+          "mark" : {
+            "layout" : "layer"
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 2,
+        "width" : 6,
+        "height" : 6
+      }
+    } ]
+  }, {
+    "name" : "c4891ce1",
+    "displayName" : "Product",
+    "layout" : [ {
+      "widget" : {
+        "name" : "19fd2509",
+        "queries" : [ {
+          "name" : "dashboards/01eff063af561aac8bcdb6df81363074/datasets/01eff06cb6861120ac2f5391f444c64d_product_name",
+          "query" : {
+            "datasetName" : "ef027490",
+            "fields" : [ {
+              "name" : "product_name",
+              "expression" : "`product_name`"
+            }, {
+              "name" : "product_name_associativity",
+              "expression" : "COUNT_IF(`associative_filter_predicate_group`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 2,
+          "widgetType" : "filter-multi-select",
+          "encodings" : {
+            "fields" : [ {
+              "fieldName" : "product_name",
+              "displayName" : "product_name",
+              "queryName" : "dashboards/01eff063af561aac8bcdb6df81363074/datasets/01eff06cb6861120ac2f5391f444c64d_product_name"
+            } ]
+          },
+          "frame" : {
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "width" : 4,
+        "height" : 1
+      }
+    }, {
+      "widget" : {
+        "name" : "2584da3b",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "ef027490",
+            "fields" : [ {
+              "name" : "countdistinct(review)",
+              "expression" : "COUNT(DISTINCT `review`)"
+            }, {
+              "name" : "product_name",
+              "expression" : "`product_name`"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "bar",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "countdistinct(review)",
+              "scale" : {
+                "type" : "quantitative"
+              },
+              "displayName" : "Mentions (count)"
+            },
+            "y" : {
+              "fieldName" : "product_name",
+              "scale" : {
+                "type" : "categorical"
+              },
+              "displayName" : "Cookie"
+            },
+            "label" : {
+              "show" : false
+            }
+          },
+          "frame" : {
+            "title" : "Mentions",
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 1,
+        "width" : 6,
+        "height" : 6
+      }
+    }, {
+      "widget" : {
+        "name" : "9ef3e930",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "ef027490",
+            "fields" : [ {
+              "name" : "avg(product_score)",
+              "expression" : "AVG(`product_score`)"
+            }, {
+              "name" : "product_name",
+              "expression" : "`product_name`"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "bar",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "avg(product_score)",
+              "scale" : {
+                "type" : "quantitative"
+              },
+              "displayName" : "Product Score (avg)"
+            },
+            "y" : {
+              "fieldName" : "product_name",
+              "scale" : {
+                "type" : "categorical"
+              },
+              "displayName" : "Cookie"
+            },
+            "label" : {
+              "show" : false
+            }
+          },
+          "frame" : {
+            "title" : "Review Scores",
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 7,
+        "width" : 6,
+        "height" : 6
+      }
+    }, {
+      "widget" : {
+        "name" : "b4a7b2d1",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "ef027490",
+            "fields" : [ {
+              "name" : "product_name",
+              "expression" : "`product_name`"
+            }, {
+              "name" : "product_score",
+              "expression" : "`product_score`"
+            }, {
+              "name" : "review",
+              "expression" : "`review`"
+            }, {
+              "name" : "location",
+              "expression" : "`location`"
+            } ],
+            "disaggregated" : true
+          }
+        } ],
+        "spec" : {
+          "version" : 1,
+          "widgetType" : "table",
+          "encodings" : {
+            "columns" : [ {
+              "fieldName" : "product_name",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "string",
+              "displayAs" : "string",
+              "visible" : true,
+              "order" : 4,
+              "title" : "product_name",
+              "allowSearch" : false,
+              "alignContent" : "left",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "product_name"
+            }, {
+              "fieldName" : "product_score",
+              "numberFormat" : "0",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "integer",
+              "displayAs" : "number",
+              "visible" : true,
+              "order" : 5,
+              "title" : "product_score",
+              "allowSearch" : false,
+              "alignContent" : "right",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "product_score"
+            }, {
+              "fieldName" : "review",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "string",
+              "displayAs" : "string",
+              "visible" : true,
+              "order" : 6,
+              "title" : "review",
+              "allowSearch" : false,
+              "alignContent" : "left",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "review"
+            }, {
+              "fieldName" : "location",
+              "booleanValues" : [ "false", "true" ],
+              "imageUrlTemplate" : "{{ @ }}",
+              "imageTitleTemplate" : "{{ @ }}",
+              "imageWidth" : "",
+              "imageHeight" : "",
+              "linkUrlTemplate" : "{{ @ }}",
+              "linkTextTemplate" : "{{ @ }}",
+              "linkTitleTemplate" : "{{ @ }}",
+              "linkOpenInNewTab" : true,
+              "type" : "string",
+              "displayAs" : "string",
+              "visible" : true,
+              "order" : 8,
+              "title" : "location",
+              "allowSearch" : false,
+              "alignContent" : "left",
+              "allowHTML" : false,
+              "highlightLinks" : false,
+              "useMonospaceFont" : false,
+              "preserveWhitespace" : false,
+              "displayName" : "location"
+            } ]
+          },
+          "invisibleColumns" : [ {
+            "numberFormat" : "0",
+            "booleanValues" : [ "false", "true" ],
+            "imageUrlTemplate" : "{{ @ }}",
+            "imageTitleTemplate" : "{{ @ }}",
+            "imageWidth" : "",
+            "imageHeight" : "",
+            "linkUrlTemplate" : "{{ @ }}",
+            "linkTextTemplate" : "{{ @ }}",
+            "linkTitleTemplate" : "{{ @ }}",
+            "linkOpenInNewTab" : true,
+            "name" : "service_score",
+            "type" : "integer",
+            "displayAs" : "number",
+            "order" : 0,
+            "title" : "service_score",
+            "allowSearch" : false,
+            "alignContent" : "right",
+            "allowHTML" : false,
+            "highlightLinks" : false,
+            "useMonospaceFont" : false,
+            "preserveWhitespace" : false
+          }, {
+            "numberFormat" : "0",
+            "booleanValues" : [ "false", "true" ],
+            "imageUrlTemplate" : "{{ @ }}",
+            "imageTitleTemplate" : "{{ @ }}",
+            "imageWidth" : "",
+            "imageHeight" : "",
+            "linkUrlTemplate" : "{{ @ }}",
+            "linkTextTemplate" : "{{ @ }}",
+            "linkTitleTemplate" : "{{ @ }}",
+            "linkOpenInNewTab" : true,
+            "name" : "atmosphere_score",
+            "type" : "integer",
+            "displayAs" : "number",
+            "order" : 1,
+            "title" : "atmosphere_score",
+            "allowSearch" : false,
+            "alignContent" : "right",
+            "allowHTML" : false,
+            "highlightLinks" : false,
+            "useMonospaceFont" : false,
+            "preserveWhitespace" : false
+          }, {
+            "booleanValues" : [ "false", "true" ],
+            "imageUrlTemplate" : "{{ @ }}",
+            "imageTitleTemplate" : "{{ @ }}",
+            "imageWidth" : "",
+            "imageHeight" : "",
+            "linkUrlTemplate" : "{{ @ }}",
+            "linkTextTemplate" : "{{ @ }}",
+            "linkTitleTemplate" : "{{ @ }}",
+            "linkOpenInNewTab" : true,
+            "name" : "urgency",
+            "type" : "string",
+            "displayAs" : "string",
+            "order" : 2,
+            "title" : "urgency",
+            "allowSearch" : false,
+            "alignContent" : "left",
+            "allowHTML" : false,
+            "highlightLinks" : false,
+            "useMonospaceFont" : false,
+            "preserveWhitespace" : false
+          }, {
+            "booleanValues" : [ "false", "true" ],
+            "imageUrlTemplate" : "{{ @ }}",
+            "imageTitleTemplate" : "{{ @ }}",
+            "imageWidth" : "",
+            "imageHeight" : "",
+            "linkUrlTemplate" : "{{ @ }}",
+            "linkTextTemplate" : "{{ @ }}",
+            "linkTitleTemplate" : "{{ @ }}",
+            "linkOpenInNewTab" : true,
+            "name" : "franchiseID",
+            "type" : "string",
+            "displayAs" : "string",
+            "order" : 3,
+            "title" : "franchiseID",
+            "allowSearch" : false,
+            "alignContent" : "left",
+            "allowHTML" : false,
+            "highlightLinks" : false,
+            "useMonospaceFont" : false,
+            "preserveWhitespace" : false
+          }, {
+            "dateTimeFormat" : "DD/MM/YY HH:mm:ss.SSS",
+            "booleanValues" : [ "false", "true" ],
+            "imageUrlTemplate" : "{{ @ }}",
+            "imageTitleTemplate" : "{{ @ }}",
+            "imageWidth" : "",
+            "imageHeight" : "",
+            "linkUrlTemplate" : "{{ @ }}",
+            "linkTextTemplate" : "{{ @ }}",
+            "linkTitleTemplate" : "{{ @ }}",
+            "linkOpenInNewTab" : true,
+            "name" : "review_date",
+            "type" : "datetime",
+            "displayAs" : "datetime",
+            "order" : 7,
+            "title" : "review_date",
+            "allowSearch" : false,
+            "alignContent" : "right",
+            "allowHTML" : false,
+            "highlightLinks" : false,
+            "useMonospaceFont" : false,
+            "preserveWhitespace" : false
+          } ],
+          "allowHTMLByDefault" : false,
+          "itemsPerPage" : 25,
+          "paginationSize" : "default",
+          "condensed" : true,
+          "withRowNumber" : false,
+          "frame" : {
+            "title" : "Table of product reviews",
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 13,
+        "width" : 6,
+        "height" : 6
+      }
+    } ]
+  } ]
+}
